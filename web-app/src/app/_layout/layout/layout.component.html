@@ -1,0 +1,21 @@
+<div class="layout-container">
+  <mat-sidenav-container [hasBackdrop]="false">
+    <mat-sidenav #sidenav mode="push" [(opened)]="opened">
+      <app-sidebar></app-sidebar>
+    </mat-sidenav>
+    <mat-sidenav-content class="main-content">
+      <app-header></app-header>
+      <div class="loader" *ngIf="isLoading$ | async">
+        <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
+      </div>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <div id="busy-indicator" *ngIf="isBlocking$| async">
+    <div>
+      <mat-progress-spinner mode="indeterminate">
+      </mat-progress-spinner>
+    </div>
+  </div>
+</div>

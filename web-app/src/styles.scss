@@ -1,0 +1,86 @@
+@import "src/variables.scss";
+
+/* You can add global styles to this file, and also import other style files */
+body {
+    background: #eee;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.page-content {
+    padding: 5px;
+}
+
+.mat-table {
+    thead {
+        background-color: #3f51b5;
+        th {
+            color: white;
+            font-weight: bold;
+        }
+    }
+    tbody {
+        tr:nth-child(even) {
+            background-color: #efefef; 
+        }
+    }
+}
+
+/* .squaredOne */
+$activeColor: #27ae60; //green
+$darkenColor: darken($activeColor, 20%);
+.squaredOne {
+  position: relative;  
+  width: 28px;
+  height: 28px;  
+  background: #fcfff4;
+  background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+  
+  label {
+    position: absolute;
+    width: 20px;
+    height: 20px;    
+    top: 4px;
+    left: 4px;
+    cursor: pointer;
+    background: -webkit-linear-gradient(top, #222 0%, #45484d 100%);
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
+    &:after {
+      content: '';
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      background: $activeColor;
+      background: -webkit-linear-gradient(top, $activeColor 0%, $darkenColor 100%);
+      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+      opacity: 0;
+    }
+    &:hover::after {
+      opacity: 0.3;
+    }
+  }
+  input[type=checkbox] {
+    visibility: hidden;
+    &:checked + label:after {
+      opacity: 1;
+    }   
+  } 
+}
+/* end .squaredOne */
+
+/* validation */
+.ng-valid[required],
+.ng-valid.required {
+  border-left: 5px solid #42A948;
+  /* green */
+}
+
+.ng-invalid:not(form) {
+  border-left: 5px solid #a94442;
+  /* red */
+}
+
+@import "src/app/shared/styles/hamburger.scss";

@@ -1,0 +1,12 @@
+<div class="popover-container">
+  <button 
+    class="btn popover-btn"
+    (click)="onClick()">
+    {{buttonTitle}}
+  </button>
+  <div class="popover-panel"
+       [hidden]='!visible' 
+       [ngClass]='placement == "left" ? "align-from-left" : "align-from-right"'>
+    <ng-content></ng-content>
+  </div>
+</div>

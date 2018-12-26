@@ -1,0 +1,41 @@
+.popover-container {
+  position: relative;
+  .popover-btn {
+      color: white;
+      background: transparent;
+  }
+  .popover-panel {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 52px;
+    background: rgba(20, 20, 20, 0.4);
+    z-index: 100;
+    width: 300px;
+    
+    &:before {
+      content: '';
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0px 10px 10px 10px;
+      border-color: transparent transparent rgba(20, 20, 20, 0.4) transparent;
+      position: absolute;
+      top: -10px;
+    }
+    &.align-from-left {
+      left: 2px;
+    }
+    &.align-from-left:before {
+      left: 0;
+      transform: translateX(100%);
+    }
+    &.align-from-right {
+      right: 2px;
+    }
+    &.align-from-right:before {
+      right: 0;
+      transform: translateX(-100%);
+    }
+  }
+}

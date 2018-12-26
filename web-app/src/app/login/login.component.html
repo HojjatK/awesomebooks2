@@ -1,0 +1,16 @@
+<div class="login-container">
+  <div class="login-widget">
+    <div class="login-widget-header">
+      <button id="btn-signin" [class]="!showSignIn ? 'inactive' : ''" (click)="singInClick()" >Sign In</button>
+      <button id="btn-signup" [class]="showSignIn ? 'inactive' : ''" (click)="singUpClick()">Sign Up</button>
+    </div>
+    <div class="login-widget-content">
+      <div *ngIf="showSignIn">
+        <app-sign-in></app-sign-in>
+      </div>
+      <div *ngIf="!showSignIn">
+          <app-sign-up></app-sign-up>
+      </div>
+    </div>
+  </div>
+</div>

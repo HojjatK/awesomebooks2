@@ -1,0 +1,48 @@
+@import "src/variables.scss";
+
+.side-nav {
+  background-color: $bg-color1 !important;
+  @media (max-width: 575px) {
+    height: 100vh;
+  }
+  @media (min-width: 575px) {  
+    height: 100vh;
+  }
+  width: 300px;
+  ul {
+    list-style: none;
+    padding-left: 0px;
+    li {
+      a {
+        padding: 10px 10px;
+        display: inline-block;
+        text-decoration: none;
+        color: #ddd;
+        i {
+          margin-right: 20px;
+          margin-left: 10px;
+          font-size: 20px;
+        }
+      }
+      a:hover {
+        color: white;
+        background-color: $bg-color2 !important;
+      }
+      a.active {
+        color: orange;
+      }
+    }
+  }
+}
+
+#brand-btn {
+  width: 100%;
+  outline: none;
+  &:hover,
+  &:focus,
+  &:active
+  {
+    background: transparent !important;
+  }
+  margin-bottom: 10px;
+}

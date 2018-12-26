@@ -1,0 +1,16 @@
+<nav class="side-nav bg-dark">
+  <ul>
+    <li class="d-flex justify-content-center align-items-center" style="padding:5px;">
+      <img src="/src/assets/user-avatar.png" height="70" title="{{currentUser}}" />
+      <a id="brand-btn" class="navbar-brand" href="#">Awesome Books</a>
+    </li>
+  </ul>
+  <ul>
+    <li *ngFor="let item of menuItems; let i = index">
+      <a [routerLink]='item.route' [class]="i == activeIndex ? 'd-flex active' : 'd-flex'" (click)="closeSideMenu(i)">
+        <i [class]="'oi oi-' + item.icon"></i>
+        <span>{{item.title}}</span>
+      </a>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  awesomebooks.api:
+    image: awesomebooks.api
+    build:
+      context: ./AwesomeBooks.Api
+      dockerfile: Dockerfile

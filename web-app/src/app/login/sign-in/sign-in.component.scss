@@ -1,0 +1,47 @@
+.btn {
+  border-radius: 0 !important;
+}
+
+.login-form {
+  padding-bottom: 40px;
+  border-bottom: solid 1px #222;
+  color: white;
+  input[type="email"],
+  input[type="password"] {
+    color: black;
+  }
+  input[type="submit"]#login {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 10px;
+    text-align: center;
+    height: 50px;
+    color: white;
+  }
+  .login-bar {
+    margin-top: 20px;
+    label {
+      font-weight: normal;
+    }
+    input[type="checkbox"] {
+      margin-right: 5px;
+    }
+    a.forgotten-password {
+      color: black;
+      &:hoever,
+      &:focus {
+        color: black;
+      }
+    }
+  }
+}
+
+.social {
+  color: white;
+  border-top: solid 1px #ddd;
+  padding-top: 10px;
+  button {
+    width: 200px;
+    margin: 10px;
+  }
+}

@@ -1,0 +1,52 @@
+<app-page title="Category">
+  <form #categroyForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group row">
+      <label for="name" class="col-sm-2 col-form-label">Name</label>
+      <div class="col-sm-10">
+        <input id="name"
+               name="name" 
+               type="text" 
+               class="form-control" 
+               required
+               maxlength="50"
+               [(ngModel)]="model.name"
+               #name="ngModel">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="category-group" class="col-sm-2 col-form-label">Group</label>
+      <div class="col-sm-10">
+          <mat-select 
+            name="categoryGroup" 
+            #categoryGroup="ngModel" 
+            [(ngModel)]="selectedGroup"
+            required
+            class="form-control">
+              <mat-option>-- Select --</mat-option>
+              <mat-option *ngFor="let group of categoryGroups" [value]="group">
+                {{group.name}}
+              </mat-option>
+          </mat-select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="description" class="col-sm-2 col-form-label">Description</label>
+      <div class="col-sm-10">
+        <textarea id="description" 
+                  name="description"
+                  class="form-control" 
+                  rows="4" 
+                  placeholder="A brief description about category"
+                  [(ngModel)]="model.description"></textarea>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit"
+                [disabled]="!categroyForm.form.valid" 
+                class="btn btn-primary">{{submitText}}</button>
+      </div>
+    </div>
+  </form>
+</app-page>

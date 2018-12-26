@@ -1,0 +1,38 @@
+<form #signInForm="ngForm" class="login-form">
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label" for="email-address">Username</label>
+    <div class="col-sm-9">
+      <input id="email-address" type="email" class="form-control" placeholder="Email address" required email tabindex="1"
+             name="username" [(ngModel)]="model.username" />
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label" for="email-address">Password</label>
+    <div class="col-sm-9">
+      <input type="password" class="form-control" placeholder="Your password" required tabindex="2" name="password"
+            [(ngModel)]="model.password" />
+    </div>
+  </div>
+  <input type="submit" id="login" [disabled]="!signInForm.form.valid" class="btn btn-warning fa-lg" value="Login" tabindex="3" (click)="login()" />
+
+  <div class="login-bar d-flex justify-content-around">
+    <div class="d-flex">
+      <div id="stay-signed-in" class="squaredOne">
+        <input type="checkbox" id="squaredOne" checked />
+        <label for="squaredOne"></label>
+      </div>
+      <label style="margin-left:10px;color:#eee;cursor:pointer;" for="squaredOne">Keep me signed in</label>
+    </div>
+
+    <a class="forgotten-password" style="color:#eee;" href="#">Forgotten your password?</a>
+  </div>
+</form>
+
+<div class="social p-2">
+  <p>Use your social network account to login</p>
+  <div class="d-flex justify-content-around">
+    <button class="btn btn-danger">Google</button>
+    <button class="btn btn-info">Twitter</button>
+    <button class="btn btn-primary">Facebook</button>
+  </div>
+</div>

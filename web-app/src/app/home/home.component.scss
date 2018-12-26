@@ -1,0 +1,23 @@
+@import "src/variables.scss";
+
+.banner {
+  min-height: 400px;
+  color: white;
+  background-color: #000;
+  padding: 25px;
+}
+
+.chart-container {
+  position: relative;
+  margin: auto;
+  height: 300px;
+}
+.home-carousel {
+  .carousel-slide {
+    text-align: center;
+    color: white;
+    background-color: #000;
+    padding: 5px 45px;
+    min-height: 400px;
+  }
+}

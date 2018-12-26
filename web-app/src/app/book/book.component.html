@@ -1,0 +1,40 @@
+<app-page title="Books">
+  <div class="d-flex">
+    <button [routerLink]="['/book/new']" mat-raised-button color="primary">New Book</button>
+    <a style="margin-left: 5px;" mat-flat-button color="accent" [href]="downloadBooksUrl">
+      <i class="oi oi-data-transfer-download"></i>
+    </a>
+    <app-file-upload [uploadFile]="bookFile" (uploadSelected)="onSubmitUpload($event)">
+    </app-file-upload>
+  </div>
+
+  <div class="row mt-3">
+    <cdk-virtual-scroll-viewport itemSize="3" class="book-viewport">
+        <div *cdkVirtualFor="let bookRow of bookRows">
+            <div class="row">
+               <div *ngFor="let book of bookRow" class="col-md-4">
+                  <div style="width:100%;">
+                      <a style="color:blue; margin-right: 5px;" [routerLink]="['/book/'+book.id]"><i class="oi oi-pencil"></i></a>
+                      <a style="color:red;" (click)="delete(book)"><i class="oi oi-trash"></i></a>
+                  </div>
+                  <app-card 
+                      [title]="book.name" 
+                      [subTitle]="'' + book.publish_year + ' , ' + book.authors" 
+                      [imageSrc]="book.image_uri"
+                      [description]="book.reflection"></app-card>
+               </div> 
+            </div>
+        </div>
+    </cdk-virtual-scroll-viewport>
+    <!-- <div *ngFor="let book of books" class="col-md-4">
+      <div style="width:100%;">
+        <a style="color:red;" (click)="delete(book)"><i class="pull-right oi oi-trash"></i></a>
+      </div>
+      <app-card 
+        [title]="book.name" 
+        [subTitle]="'' + book.publish_year + ' , ' + book.authors" 
+        [imageSrc]="book.image_uri"
+        [description]="book.reflection"></app-card>
+    </div> -->
+  </div>
+</app-page>

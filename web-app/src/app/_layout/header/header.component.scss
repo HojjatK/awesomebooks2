@@ -1,0 +1,64 @@
+@import "src/variables.scss";
+.top-nav {
+  background-color: $bg-color1 !important;
+  border-bottom: #aaa 1px solid;
+  color: white;
+}
+
+.hamburger {
+  margin: 5px 0;
+  span {
+    background-color: white;
+  }
+}
+
+.oi-magnifying-glass {
+  font-size: 24px;
+}
+
+.search-box {
+  position: relative; 
+  input {
+    display: block;
+    padding: 0.5em;
+    padding-right: 3.0em;
+    position: relative;
+    top: 0;
+    height: inherit;
+    @media (max-width: 575px) {
+          }
+    @media (min-width: 575px) {  
+      min-width: 400px;
+    }
+  }
+
+  #search-btn {
+    position: absolute;
+    right: 0.5em;
+    z-index: 1;
+    width: 2.0em;
+    padding: 0 3px;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+
+// ul.user-profile {
+//   padding: 0;
+//   margin-top: 10px;
+//   list-style: none;
+//   li {
+//     a {
+//       color: #ddd;
+//       display: block;
+//       padding: 10px 15px;
+//       &:hover {
+//         cursor: pointer;
+//         color: #fff;
+//         background: rgba($color: #000000, $alpha: 0.4)
+//       }
+//     }
+//   }
+// }
+

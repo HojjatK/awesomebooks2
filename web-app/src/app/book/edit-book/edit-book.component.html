@@ -1,0 +1,106 @@
+<app-page title="Book">
+  <div class="row">
+    <div class="col-md-8">
+        <form #bookForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-group row">
+              <label for="name" class="col-sm-2 col-form-label">Title</label>
+              <div class="col-sm-10">
+                <input id="name" name="name" type="text" class="form-control" placeholder="" [(ngModel)]="model.name">
+              </div>
+            </div>
+        
+            <div class="form-group row">
+              <label for="category-group" class="col-sm-2 col-form-label">Category Group</label>
+              <div class="col-sm-10">
+                <mat-select 
+                  name="categoryGroup"
+                  #categoryGroup="ngModel"
+                  [(ngModel)]="selectedCategoryGroup" 
+                  required 
+                  class="form-control">
+                  <mat-option>-- Select --</mat-option>
+                  <mat-option *ngFor="let group of categoryGroups" [value]="group">
+                    {{group.name}}
+                  </mat-option>
+                </mat-select>
+              </div>
+            </div>
+        
+            <div class="form-group row">
+              <label for="category" class="col-sm-2 col-form-label">Category</label>
+              <div class="col-sm-10">
+                <mat-select 
+                  name="category"
+                  #category="ngModel"
+                  [(ngModel)]="selectedCategory"
+                  required 
+                  class="form-control" 
+                  [(ngModel)]="selectedCategory">
+                  <mat-option>-- Select --</mat-option>
+                  <mat-option *ngFor="let category of categories" [value]="category">
+                    {{category.name}}
+                  </mat-option>
+                </mat-select>
+              </div>
+            </div>
+        
+            <div class="form-group row">
+              <label for="year" class="col-sm-2 col-form-label">Year</label>
+              <div class="col-sm-10">
+                <input id="year" name="year" type="text" class="form-control" placeholder="" [(ngModel)]="model.publish_year">
+              </div>
+            </div>
+        
+            <div class="form-group row">
+              <label for="authors" class="col-sm-2 col-form-label">Authors</label>
+              <div class="col-sm-10">
+                <input id="authors" name="authors" type="text" class="form-control" placeholder="" [(ngModel)]="model.authors">
+              </div>
+            </div>
+        
+            <div class="form-group row">
+              <label for="image_uri" class="col-sm-2 col-form-label">Image Url</label>
+              <div class="col-sm-10">
+                <input id="image_uri" name="image_uri" type="text" class="form-control" placeholder="" [(ngModel)]="model.image_uri">
+              </div>
+            </div>
+        
+            <div class="form-group row">
+              <label for="amazon_uri" class="col-sm-2 col-form-label">Amazon Url</label>
+              <div class="col-sm-10">
+                <input id="amazon_uri" name="amazon_uri" type="text" class="form-control" placeholder="" [(ngModel)]="model.amazon_uri">
+              </div>
+            </div>
+        
+            <div class="form-group row">
+              <label for="content_uri" class="col-sm-2 col-form-label">Download Url</label>
+              <div class="col-sm-10">
+                <input id="content_uri" name="content_uri" type="text" class="form-control" placeholder="" [(ngModel)]="model.content_uri">
+              </div>
+            </div>
+        
+            <div class="form-group row">
+              <label for="reflection" class="col-sm-2 col-form-label">Description</label>
+              <div class="col-sm-10">
+                <textarea id="reflection" name="reflection" class="form-control" rows="4" placeholder="A brief review about book" [(ngModel)]="model.reflection"></textarea>
+              </div>
+            </div>
+        
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <button type="submit"
+                        [disabled]="!bookForm.form.valid" 
+                        class="btn btn-primary">{{submitText}}</button>
+              </div>
+            </div>
+          </form>
+    </div>
+    <div class="col-md-4">
+        <img src="{{model.image_uri}}" 
+             *ngIf="model.image_uri != ''" 
+             class="rounded mx-auto img-fluid" 
+             title="Book's Image"/>
+    </div>
+  </div>
+  
+</app-page>

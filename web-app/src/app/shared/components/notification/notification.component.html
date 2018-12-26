@@ -1,0 +1,15 @@
+<div class="popover-container">
+    <button type="button" 
+            style="height:42px"
+            class="btn btn-default notification"
+            (click)="onClick()">
+        <i class="oi oi-bell"></i>
+        <span class="badge badge-pill badge-info">2</span>
+        <span class="sr-only">Unread messages</span>
+    </button>
+    <div class="popover-panel"
+         [hidden]='!visible' 
+         [ngClass]='placement == "left" ? "align-from-left" : "align-from-right"'>
+      <ng-content></ng-content>
+    </div>
+  </div>

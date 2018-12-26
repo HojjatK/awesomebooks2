@@ -1,0 +1,35 @@
+<nav class="top-nav navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+  <div [class]="'hamburger ' + (menuOpen ? 'open' : '')" (click)="menuClick()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="d-flex">
+    <form #searchForm="ngForm" class="search-box form-inline">
+      <input type="search"
+            name="searchText"
+            [(ngModel)]="searchText"
+            class="form-control glow"
+            placeholder="Search" 
+            aria-label="Search">
+      <a id="search-btn" class="btn btn-warning" (click)="search()">
+        <i class="oi oi-magnifying-glass"></i>
+      </a>
+    </form>
+
+    <app-notification [placement]="right">
+      <div style="padding:10px 20px;">
+        <div style=" margin: 2px;">
+          <p><i style="color:blue;" class="oi oi-info"></i> 
+            This is an information notification</p>
+        </div>
+        <div style="margin: 2px;">
+          <p><i style="color:red" class="oi oi-warning"></i> 
+            This is an error notification
+          </p>
+        </div>
+      </div>
+    </app-notification>
+  </div>
+</nav>
