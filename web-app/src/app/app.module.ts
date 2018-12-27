@@ -40,7 +40,7 @@ import { AuthGuard } from 'src/app/shared/guards/auth.guard';
 import { HttpHeadersInterceptor } from './shared/services/interceptors/http-header.interceptor.';
 import { HttpResponseInterceptor } from './shared/services/interceptors/http-response.interceptor';
 import { HttpLoadingInterceptor } from './shared/services/interceptors/http-loading.interceptor';
-import { LogService } from './shared/services/log/log.service';
+import { LoggerService } from './shared/services/logger/logger.service';
 import { HttpLoadingService } from './shared/services/http-loading/http-loading.service';
 import { CategoryGroupService } from './shared/services/category-group/category-group.service';
 import { CategoryService } from './shared/services/category/category.service';
@@ -85,7 +85,7 @@ import { FileService } from './shared/services/file/file.service';
   providers: [
     AuthGuard,
     AuthService,
-    LogService,
+    LoggerService,
     CategoryGroupService,
     CategoryService,
     BookService,
