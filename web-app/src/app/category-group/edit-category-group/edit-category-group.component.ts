@@ -11,20 +11,20 @@ import { CategoryGroupService } from 'src/app/shared/services/category-group/cat
   styleUrls: ['./edit-category-group.component.scss']
 })
 export class EditCategoryGroupComponent implements OnInit {
+  constructor(
+    private route : ActivatedRoute,
+    private router: Router,
+    private categoryGroupService : CategoryGroupService) {
+  }
+
   private _action : 'new' | 'edit';
-  private Id$: Observable<string>;  
+  private Id$: Observable<string>;
 
   private _model: CategoryGroupModel = {
     id: 0,
     name: '',
     description: ''
   };
-  
-  constructor(
-    private route : ActivatedRoute,
-    private router: Router,
-    private categoryGroupService : CategoryGroupService) {
-  }
 
   @Input('action')
   public get action() : 'new' | 'edit' {

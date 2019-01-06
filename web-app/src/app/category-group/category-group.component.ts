@@ -12,17 +12,23 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./category-group.component.scss']
 })
 export class CategoryGroupComponent implements OnInit {
-  public columns: string[] = ['id', 'name', 'description', 'action'];
-  dataSource = new MatTableDataSource<CategoryGroupModel>([]);
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  categoryGroupFile: File;
-
   constructor(
     private dialog: MatDialog,
     private categoryGroupService: CategoryGroupService,
     private fileService: FileService) {
   }
+
+  public columns: string[] = ['id', 'name', 'description', 'action'];
+
+  public dataSource = new MatTableDataSource<CategoryGroupModel>([]);
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  @ViewChild(MatSort) sort: MatSort;
+
+  categoryGroupFile: File;
+
+  public pageSizes : Array<number> = [10, 20];
 
   public get columnsToDisplay(): string[] {
     return this.columns;

@@ -1,40 +1,63 @@
 <app-page title="Books">
-  <div class="d-flex">
-    <button [routerLink]="['/book/new']" mat-raised-button color="primary">New Book</button>
-    <a style="margin-left: 5px;" mat-flat-button color="accent" [href]="downloadBooksUrl">
-      <i class="oi oi-data-transfer-download"></i>
-    </a>
-    <app-file-upload [uploadFile]="bookFile" (uploadSelected)="onSubmitUpload($event)">
-    </app-file-upload>
+  <div class="d-flex mb-2">
+    <button [routerLink]="['/book/new']" 
+            mat-raised-button 
+            color="accent">New Book</button>
+
+    <a class="ml-1" mat-raised-button color="basic" [href]="downloadBooksUrl">
+      <i class="oi oi-data-transfer-download"></i> Download</a>
+
+    <app-file-upload [uploadFile]="bookFile" 
+                     (uploadSelected)="onSubmitUpload($event)"></app-file-upload>
   </div>
 
-  <div class="row mt-3">
-    <cdk-virtual-scroll-viewport itemSize="3" class="book-viewport">
+  <div class="row mb-2">
+    <div class="col-sm-6">
+        <mat-select [(value)]="selectedCategoryGroup" class="form-control">          
+          <mat-option *ngFor="let group of categoryGroups" [value]="group">{{group.name}}</mat-option>
+        </mat-select>
+    </div>
+    <div class="col-sm-6">
+        <mat-select [(value)]="selectedCategory" class="form-control">          
+          <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
+        </mat-select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-8">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" [(ngModel)]="filterValue">
+      </mat-form-field>
+    </div>
+    <div class="col-sm-4 d-flex justify-content-end align-items-center">
+      <label>{{filteredCount}}</label>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-sm-12">
+      <cdk-virtual-scroll-viewport itemSize="3" class="book-viewport">
         <div *cdkVirtualFor="let bookRow of bookRows">
-            <div class="row">
-               <div *ngFor="let book of bookRow" class="col-md-4">
-                  <div style="width:100%;">
-                      <a style="color:blue; margin-right: 5px;" [routerLink]="['/book/'+book.id]"><i class="oi oi-pencil"></i></a>
-                      <a style="color:red;" (click)="delete(book)"><i class="oi oi-trash"></i></a>
-                  </div>
-                  <app-card 
-                      [title]="book.name" 
-                      [subTitle]="'' + book.publish_year + ' , ' + book.authors" 
-                      [imageSrc]="book.image_uri"
-                      [description]="book.reflection"></app-card>
-               </div> 
+          <div class="row">
+            <div *ngFor="let book of bookRow" class="col-md-4">              
+              <app-card 
+                [title]="book.name" 
+                [subTitle]="'' + book.publish_year + ' , ' + book.authors" 
+                [imageSrc]="book.image_uri"
+                [imageLink]="book.amazon_uri"
+                [description]="book.category_group_name +  ' > ' + book.category_name + book.reflection">
+                <div class="ml-2 d-flex">
+                  <a class="text-primary mr-3" 
+                    [routerLink]="['/book/'+book.id]"><i class="oi oi-pencil"></i></a>
+                  <a class="text-danger" 
+                   (click)="delete(book)"><i class="oi oi-trash"></i></a>  
+                </div>                
+              </app-card>
             </div>
+          </div>
         </div>
-    </cdk-virtual-scroll-viewport>
-    <!-- <div *ngFor="let book of books" class="col-md-4">
-      <div style="width:100%;">
-        <a style="color:red;" (click)="delete(book)"><i class="pull-right oi oi-trash"></i></a>
-      </div>
-      <app-card 
-        [title]="book.name" 
-        [subTitle]="'' + book.publish_year + ' , ' + book.authors" 
-        [imageSrc]="book.image_uri"
-        [description]="book.reflection"></app-card>
-    </div> -->
+      </cdk-virtual-scroll-viewport>
+    </div>
   </div>
 </app-page>

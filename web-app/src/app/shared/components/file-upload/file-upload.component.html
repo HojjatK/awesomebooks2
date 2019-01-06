@@ -1,15 +1,48 @@
-<button type="button" style="margin-left: 5px;" mat-flat-button color="accent" data-toggle="collapse" data-target="#collapseExample"
-  aria-expanded="false" aria-controls="collapseExample">
-  <i class="oi oi-data-transfer-upload"></i>
+<button type="button" 
+        class="ml-1"  
+        mat-raised-button 
+        color="basic" 
+        data-toggle="collapse" 
+        data-target="#collapseExample"
+        matTooltip="{{tootip}}"
+        aria-expanded="false" 
+        aria-controls="collapseExample">
+  <i class="oi oi-data-transfer-upload"></i> Upload
 </button>
-<div class="collapse" id="collapseExample" 
-    style="position: absolute; left: 10px; right: 10px; margin-top: 5px; padding: 15px;background: #ddd; z-index:10;">
-  <form #fileUpload="ngForm" (ngSubmit)="onSubmitFileUpload()">
+
+<div class="upload-zone collapse" id="collapseExample">
+  <form #fileUpload="ngForm" class="container" (ngSubmit)="onSubmitFileUpload()">
     <div class="form-group">
-      <input type="file" name="uploadFile" class="form-control" #uploadInput [(ngModel)]="uploadFile" (change)="onFileUploadChange(uploadInput.files)">
-    </div>
-    <div class="form-group">
-      <button type="submit" mat-flat-button color="primary">Upload</button>
+      <label for="uploadFile" 
+             class="drop-zone {{dragover ? 'dragover' : ''}}"             
+             (dragover)="onDragOver($event)"
+             (dragleave)="onDragLeave($event)"
+             (drop)="onDrop($event)">
+        <div class="d-flex justify-content-center drop-text">          
+          <div *ngIf="!fileSelected">
+              <i class="oi oi-cloud"></i> 
+              <a>click or drop file here</a>
+          </div>
+          <div *ngIf="fileSelected">
+              <label>{{uploadFile.name}}</label>
+              <a (click)="clearFile()">clear file</a>
+          </div>
+        </div>
+        <input type="file"
+             id="uploadFile"
+             name="uploadFile" 
+             class="form-control" 
+             #uploadInput 
+             [(ngModel)]="uploadFile" 
+             (change)="onFileUploadChange(uploadInput.files)">
+      </label>      
+    </div>    
+
+    <div class="form-group d-flex justify-content-end">
+      <button type="submit" 
+              mat-raised-button 
+              [disabled]="!fileSelected"
+              color="primary">Submit</button>
     </div>
   </form>
 </div>

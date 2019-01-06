@@ -52,6 +52,31 @@ export interface BookModel {
     content_type: string;
     content_uri: string;
     reflection: string;
+    category_group_id: number;
+    category_group_name: string;
     category_id: number;
     category_name: string;
 }
+
+
+export interface ChartResult
+{
+    chart_title: string;
+    labels: Array<string>;
+    data: Array<number>;
+}
+
+export interface ChartSerie
+{
+    serie_id : number
+    serie_name: string;
+    data: Array<number>;
+}
+
+export interface ChartSerieResult
+{
+    chart_title: string;
+    labels: Array<string>;
+    data: Array<ChartSerie>;
+}
+

@@ -11,20 +11,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding: 5px;
 }
 
-.mat-table {
-    thead {
-        background-color: #3f51b5;
-        th {
-            color: white;
-            font-weight: bold;
-        }
-    }
-    tbody {
-        tr:nth-child(even) {
-            background-color: #efefef; 
-        }
-    }
-}
 
 /* .squaredOne */
 $activeColor: #27ae60; //green
@@ -81,6 +67,52 @@ $darkenColor: darken($activeColor, 20%);
 .ng-invalid:not(form) {
   border-left: 5px solid #a94442;
   /* red */
+}
+
+/*Grid*/
+.grid {
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  table.mat-table {
+    width: 100%;
+  }
+
+  th.mat-header-cell,
+  td.mat-cell {
+    padding: 5px;
+  }
+}
+
+.mat-table {
+  .mat-sort-header-arrow {
+    color: white;
+  }
+  thead {
+      background-color: #3f51b5;
+      th {
+          color: white;          
+          font-size: 14px;
+      }
+  }
+  tbody {
+      tr:nth-child(even) {
+          background-color: #efefef; 
+      }
+  }
+}
+
+/*Breadcrumb*/
+.breadcrumb {
+  padding: 5px !important;
+  margin: 0;
+  background-color: transparent !important;
+  color: white;
+}    
+.breadcrumb-item,
+.breadcrumb-item.active {
+  color: white;
 }
 
 @import "src/app/shared/styles/hamburger.scss";

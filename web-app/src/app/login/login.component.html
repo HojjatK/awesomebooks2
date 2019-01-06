@@ -1,8 +1,9 @@
 <div class="login-container">
+  <h1>Awesome Books</h1>
   <div class="login-widget">
     <div class="login-widget-header">
-      <button id="btn-signin" [class]="!showSignIn ? 'inactive' : ''" (click)="singInClick()" >Sign In</button>
-      <button id="btn-signup" [class]="showSignIn ? 'inactive' : ''" (click)="singUpClick()">Sign Up</button>
+      <button [class]="!showSignIn ? 'inactive' : ''" (click)="singInClick()" >Sign In</button>
+      <button [class]="showSignIn ? 'inactive' : ''" (click)="singUpClick()">Sign Up</button>
     </div>
     <div class="login-widget-content">
       <div *ngIf="showSignIn">

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Location } from '@angular/common';
 import { MessengerService } from './../../services/messenger/messenger.service';
-import { Observable, Subject, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-page',
@@ -8,8 +8,10 @@ import { Observable, Subject, throwError } from 'rxjs';
   styleUrls: ['./page.component.scss']
 })
 export class PageComponent implements OnInit {
-  constructor(private messenger: MessengerService) {
-    messenger.event$.subscribe(e => {
+  constructor(
+    private location: Location,
+    private messengerService: MessengerService) {
+    this.messengerService.event$.subscribe(e => {
       if (e.name == 'clear-error') {
         this.showError = false;
         this.errorMessage = '';
@@ -21,20 +23,27 @@ export class PageComponent implements OnInit {
     });
   }
 
-  public showError : boolean = false;
+  public showError: boolean = false;
 
   private _errorMessage: string = '';
-  public get errorMessage() : string {
+  public get errorMessage(): string {
     return this._errorMessage;
-  } 
+  }
 
-  public set errorMessage(err : string) {
+  public set errorMessage(err: string) {
     this._errorMessage = err;
   }
 
   @Input('title')
-  public title: string;
+  public title: string = '';
+
+  @Input('showTitle')
+  public showTitle: boolean = true;  
 
   ngOnInit() {
+  }
+
+  onBack() {
+    this.location.back();
   }
 }

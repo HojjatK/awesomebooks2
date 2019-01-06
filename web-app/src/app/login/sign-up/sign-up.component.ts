@@ -9,7 +9,17 @@ export class SignUpComponent implements OnInit {
 
   constructor() { }
 
+  public model = {
+    emailAddress : '',
+    password: '',
+    confirmPassword: '',
+    firstName: '',
+    lastName: ''
+  };
+
   ngOnInit() {
   }
 
+  createAccount() {    
+  }
 }

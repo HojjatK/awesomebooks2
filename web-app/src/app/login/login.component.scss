@@ -1,31 +1,37 @@
-$bg1: #21A2E1;
-$bg2: #123;
-$box_max_width: 450px;
-$box_bg: rgba(10, 10, 10, 0.1);
-$box_bg_disable: rgba(10, 10, 10, 0.2);
+@import "src/variables.scss";
 
-.login-container {
-  background: radial-gradient(at center bottom, $bg1, $bg2);
+.login-container {    
+  background: $radial-gradient-bg;
   background-size: cover;
-  overflow: hidden;
-  display: flex;
   height: 100vh;
+  overflow: hidden;
+  display: flex;  
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 50px;
+    color: #fefefe;
+    text-shadow: 10px 5px 10px #000;
+    margin-bottom: 30px;
+  }
+  
   .login-widget {
     width: 100%;
-    max-width: $box_max_width;
-    min-height: 480px;
-    background-color: $box_bg;
+    max-width: 450px;
+    min-height: 620px;
+    background-color: rgba(10, 10, 10, 0.1);
     border: solid 1px rgba(0, 0, 0, .2);
+
     .login-widget-header {
       display: flex;
       justify-content: center;
       button {
         color: white;
         width: 50%;
-        height: 50px;
+        height: 40px;
         border: none;
         background: transparent;
         &:focus {
@@ -33,7 +39,7 @@ $box_bg_disable: rgba(10, 10, 10, 0.2);
         }
       }
       button.inactive {
-        background-color: $box_bg_disable;
+        background-color: rgba(10, 10, 10, 0.2);
       }
     }
     .login-widget-content {

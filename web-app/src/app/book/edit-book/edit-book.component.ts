@@ -33,6 +33,8 @@ export class EditBookComponent implements OnInit {
     content_type: '',
     content_uri: '',
     reflection: '',
+    category_group_id: 0,
+    category_group_name: '',
     category_id: 0,
     category_name: '',
   };

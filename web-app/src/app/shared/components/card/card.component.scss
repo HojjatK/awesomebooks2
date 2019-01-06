@@ -1,7 +1,27 @@
 mat-card {
     max-width: 400px;
+    margin: auto;
     .header-image {
-        background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+        background-image: url('/src/assets/book_icon.png');
         background-size: cover;
+    }
+
+    mat-card-title {
+        font-size: 12px;
+        height: 50px;
+        overflow: hidden;
+    }
+    mat-card-subtitle {
+        font-size: 11px;
+        height: 50px;
+        overflow: hidden;
+    }
+    mat-card-actions{
+        font-size: 14px;
+    }
+
+    .card-image {
+        margin: auto;
+        text-align: center;
     }
 }

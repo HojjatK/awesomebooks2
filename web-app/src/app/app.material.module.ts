@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import {NgModule} from '@angular/core';
-import { MatButtonModule, MatCheckboxModule, MatTableModule, MatPaginatorModule,
+import { MatButtonModule, MatCheckboxModule, MatTableModule, MatPaginatorModule, MatTooltipModule,
          MatFormFieldModule, MatInputModule, MatSidenavModule, MatProgressSpinnerModule,
          MatSortModule, MatCardModule, MatProgressBarModule, MatSelectModule, MatDialogModule } from '@angular/material';
 
@@ -17,6 +17,7 @@ import { GridComponent } from './shared/components/grid/grid.component';
     MatCheckboxModule,
     MatTableModule,
     MatPaginatorModule,
+    MatTooltipModule,
     MatFormFieldModule,
     MatInputModule,
     MatSidenavModule,
@@ -34,6 +35,7 @@ import { GridComponent } from './shared/components/grid/grid.component';
     MatCheckboxModule,
     MatTableModule,
     MatPaginatorModule,
+    MatTooltipModule,
     MatFormFieldModule,
     MatInputModule,
     MatSidenavModule,

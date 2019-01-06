@@ -1,53 +1,53 @@
-<app-page title="Category Group">
-  <div class="d-flex">
-    <button [routerLink]="['/category-group/new']" mat-raised-button color="primary">New Category Group</button>
-    <a style="margin-left: 5px;" mat-flat-button color="accent"
+<app-page [title]="'Category Group'">
+  <app-page-head>
+    <button [routerLink]="['/category-group/new']" 
+            class="mr-1" 
+            mat-raised-button
+            color="accent"> New </button>
+    <a mat-raised-button 
+       matTooltip="Download category groups as CSV file" 
+       color="basic" 
        [href]="downloadCategoryGroupsUrl">
-      <i class="oi oi-data-transfer-download"></i>
-    </a>
-    <app-file-upload 
-        [uploadFile]="categoryGroupFile"
-        (uploadSelected)="onSubmitUpload($event)">
-    </app-file-upload>
-  </div>
+      <i class="oi oi-data-transfer-download"></i> Download</a>
+    <app-file-upload [uploadFile]="categoryGroupFile" 
+                     [tootip]="'Upload category groups via a CSV file'"
+                     (uploadSelected)="onSubmitUpload($event)"></app-file-upload>
+  </app-page-head>
 
   <div class="grid">
     <mat-form-field>
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
     </mat-form-field>
+    
     <div class="mat-elevation-z8">
       <table mat-table matSort [dataSource]="dataSource">
-        <!-- Id Column -->
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Id </th>
           <td mat-cell *matCellDef="let element"><a [routerLink]="'/category-group/' + element.id">#{{element.id}}</a>
           </td>
         </ng-container>
 
-        <!-- Name Column -->
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
           <td mat-cell *matCellDef="let element"> {{element.name}} </td>
         </ng-container>
 
-        <!-- Description Column -->
         <ng-container matColumnDef="description">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
           <td mat-cell *matCellDef="let element"> {{element.description}} </td>
         </ng-container>
 
-        <!-- Delete Column -->
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef></th>
           <td mat-cell *matCellDef="let element">
-            <a style="color:red;" (click)="delete(element)"><i class="oi oi-trash"></i></a>
+            <a class="text-danger" (click)="delete(element)"><i class="oi oi-trash"></i></a>
           </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
         <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
       </table>
-      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+      <mat-paginator [pageSizeOptions]="pageSizes" showFirstLastButtons></mat-paginator>
     </div>
   </div>
 </app-page>

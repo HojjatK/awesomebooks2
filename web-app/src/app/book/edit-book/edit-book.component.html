@@ -1,5 +1,11 @@
 <app-page title="Book">
   <div class="row">
+     <div class="col-md-4">
+       <img src="{{model.image_uri}}" 
+            *ngIf="model.image_uri != ''" 
+            class="rounded mx-auto img-fluid" 
+            title="Book's Image"/>
+    </div>
     <div class="col-md-8">
         <form #bookForm="ngForm" (ngSubmit)="onSubmit()">
             <div class="form-group row">
@@ -94,13 +100,6 @@
               </div>
             </div>
           </form>
-    </div>
-    <div class="col-md-4">
-        <img src="{{model.image_uri}}" 
-             *ngIf="model.image_uri != ''" 
-             class="rounded mx-auto img-fluid" 
-             title="Book's Image"/>
-    </div>
-  </div>
-  
+    </div>    
+  </div>  
 </app-page>

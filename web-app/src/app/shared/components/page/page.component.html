@@ -1,4 +1,9 @@
 <div class="container page-content">
+  <div *ngIf="showTitle" class="page-title d-flex justify-content-start">
+    <button mat-flat-button class="btn-back" (click)="onBack()"><i class="oi oi-arrow-circle-left"></i></button>
+    <mc-breadcrumbs></mc-breadcrumbs>
+    <div></div>
+  </div>
   <div *ngIf="showError">
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
       <p>{{errorMessage}}</p>

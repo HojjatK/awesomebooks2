@@ -1,98 +1,110 @@
-<app-page title="Home Page">
-  <div class="banner row">
-    <div class="col-md-5">
-      <h1>Awesome Books</h1>
-      <div>
-        <img src="/src/assets/banner-books.png" height="250" title="Awesome books image" />
-        <h4>Categorizing, Managing and Searching</h4>
-        <p>your favorite awesome books</p>
+<div style="width:100vw;background-color:black">
+  <div class="container">
+    <div class="banner row">
+      <div class="col-md-5">
+        <h1>Awesome Books</h1>
+        <div class="d-flex flex-column align-items-center">
+          <img src="/src/assets/banner-books.png" height="250" title="Awesome books image" />
+          <h4>Creating, Managing and Searching</h4>
+          <div class="d-flex w-100 justify-content-center">
+            <button mat-flat-button [routerLink]="['/category-group']" class="mr-1" color="warn">Category Groups</button>
+            <button mat-flat-button [routerLink]="['/category']" class="mr-1" color="warn">Categories</button>
+            <button mat-flat-button [routerLink]="['/book']" color="warn">Awesome Books</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <carousel class="home-carousel">
+          <slide>
+            <div class="carousel-slide">
+              <h2>Viewers</h2>
+              <div class="chart-container">
+                <canvas baseChart *ngIf="lineChartData" [options]="chartOptions" [datasets]="lineChartData" [labels]="lineChartLabels"
+                  [options]="lineChartOptions" [legend]="false" [chartType]="lineChartType" (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+          </slide>
+          <slide>
+            <div class="carousel-slide">
+              <h2>Ringo</h2>
+              <div class="chart-container">
+                <canvas baseChart *ngIf="doughnutChartData" [legend]="true" [data]="doughnutChartData" [labels]="doughnutChartLabels"
+                  [chartType]="doughnutChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+          </slide>
+          <slide>
+            <div class="carousel-slide">
+              <h2>Bar bar</h2>
+              <div class="chart-container">
+                <canvas baseChart *ngIf="barChartData" [datasets]="barChartData" [labels]="barChartLabels" [legend]="false"
+                  [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+          </slide>
+        </carousel>
       </div>
     </div>
-    <div class="col-md-7">
-      <carousel class="home-carousel">
-        <slide>
-          <div class="carousel-slide">
-            <h2>Viewers</h2>
-            <div class="chart-container">
-              <canvas baseChart [options]="chartOptions" [datasets]="lineChartData" [labels]="lineChartLabels"
-                [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
-                (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-            </div>
-          </div>
-        </slide>
-        <slide>
-          <div class="carousel-slide">
-            <h2>Ringo</h2>
-            <div class="chart-container">
-              <canvas baseChart [options]="chartOptions" [data]="doughnutChartData" [labels]="doughnutChartLabels"
-                [chartType]="doughnutChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-            </div>
-          </div>
-        </slide>
-        <slide>
-          <div class="carousel-slide">
-            <h2>Bar bar</h2>
-            <div class="chart-container">
-              <canvas baseChart [options]="chartOptions" [datasets]="barChartData" [labels]="barChartLabels"
-                [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"></canvas>
-            </div>
-          </div>
-        </slide>
-      </carousel>
-    </div>
   </div>
+</div>
 
-  <div style="min-height:300px;padding:30px;font-size: 18px;" class="row">
-    <p>
-      This is a demo dashborad for your awesome books.
-    </p>
-    <p>
-      Dashboard will show you useful charts relating to your site visits, and 
-      usefule information about your favorite books. Aslo it should provide you a good 
-      integration with google analytics as well.
-    </p>
-  </div>
-
-  <div style="background-color: #eee;padding:2px;" class="row">
-    <div class="col-md-4">
-      <div style="display: block;margin:1px;background-color:ivory">
-        <canvas baseChart height="300" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
-          [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"></canvas>
-      </div>
+<app-page [title]="'Home Page'" [showTitle]="false">
+  <div style="min-height:300px;padding:30px;font-size:18px;" class="row">
+    <div class="col-sm-12">
+      <p>
+        <strong>Welcome to your awesome book's dashboard</strong>
+        <br/>
+        Dashboard show you usefule information about your awesome  books, site visits, 
+        and provide you a good integration with google analytics as well.
+      </p>      
     </div>
-    <div class="col-md-4">
-      <div style="display: block;margin:1px;background-color:ivory">
-        <canvas baseChart height="300" [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
-          [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div style="display: block;margin:1px;background-color:ivory">
-        <canvas baseChart height="300" [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
-          (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-      </div>
-    </div>
-  </div>
-  <div style="background-color: #eee;" class="row">
-    <div class="col-md-4">
-      <div style="display: block;margin:1px;background-color:ivory">
-        <canvas baseChart height="300" [datasets]="radarChartData" [labels]="radarChartLabels" [chartType]="radarChartType"
-          (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div style="display: block;margin:1px;background-color:ivory">
-        <canvas baseChart height="300" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
-          (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div style="display: block;margin:1px;background-color:ivory">
-        <canvas baseChart height="300" [data]="polarAreaChartData" [labels]="polarAreaChartLabels" [legend]="polarAreaLegend"
-          [chartType]="polarAreaChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-      </div>
+    <div class="col-sm-12">
+        <div style="background-color: #eee;padding:2px;" class="row">
+            <div class="col-md-6">
+              <div style="display: block;margin:1px;background-color:ivory">
+                <canvas baseChart height="300" *ngIf="lineChartData" [legend]="false" [datasets]="lineChartData" [labels]="lineChartLabels"
+                  [options]="lineChartOptions" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div style="display: block;margin:1px;background-color:ivory">
+                <canvas baseChart height="300" *ngIf="barChartData" [legend]="false" [datasets]="barChartData" [labels]="barChartLabels"
+                  [options]="barChartOptions" [legend]="false" [chartType]="barChartType" (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+          </div>
+          <div style="background-color: #eee;" class="row">
+            <div class="col-md-6">
+              <div style="display: block;margin:1px;background-color:ivory">
+                <canvas baseChart height="300" *ngIf="doughnutChartData" [data]="doughnutChartData" [labels]="doughnutChartLabels"
+                  [chartType]="doughnutChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div style="display: block;margin:1px;background-color:ivory">
+                <canvas baseChart height="300" *ngIf="radarChartData" [legend]="false" [datasets]="radarChartData" [labels]="radarChartLabels"
+                  [chartType]="radarChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+          </div>
+        
+          <div style="background-color: #eee;" class="row">
+            <div class="col-md-6">
+              <div style="display: block;margin:1px;background-color:ivory">
+                <canvas baseChart height="300" *ngIf="pieChartData" [legend]="false" [data]="pieChartData" [labels]="pieChartLabels"
+                  [chartType]="pieChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div style="display: block;margin:1px;background-color:ivory">
+                <canvas baseChart height="300" *ngIf="polarAreaChartData" [data]="polarAreaChartData" [labels]="polarAreaChartLabels"
+                  [legend]="false" [chartType]="polarAreaChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+          </div>
     </div>
   </div>
 </app-page>

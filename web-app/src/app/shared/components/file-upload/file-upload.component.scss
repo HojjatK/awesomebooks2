@@ -1,0 +1,49 @@
+
+.upload-zone {
+    position: absolute; 
+    left: 10px; 
+    right: 20px; 
+    margin-top: 5px; 
+    padding: 15px;
+    background: #eee; 
+    z-index:10;
+
+    .drop-zone {        
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;    
+        background: #ccc;
+        border: 3px dotted #bebebe;
+        border-radius: 10px;
+
+        .drop-text {
+            padding: 10px;       
+            i {
+                color: darkgreen;
+                display: block;
+                margin: auto;
+                text-align: center;
+                font-size: 35px;
+            }
+            a {
+                color: darkgreen;
+                display: block;
+                margin: auto;
+                text-align: center;
+                text-decoration: underline;                
+            }
+            width: 100%;
+            height: 100px;
+        }
+    }
+
+    .drop-zone.dragover {
+        background-color: #aaa;
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+
+}

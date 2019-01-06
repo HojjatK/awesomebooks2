@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppMaterialModule } from 'src/app/app.material.module';
 import { ChartsModule } from 'ng2-charts';
+import { McBreadcrumbsModule } from 'ngx-breadcrumbs';
 
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { AlertModule } from 'ngx-bootstrap';
@@ -16,6 +17,7 @@ import { CardComponent } from 'src/app/shared/components/card/card.component';
 import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 import { NotificationComponent } from 'src/app/shared/components/notification/notification.component';
 import { PageComponent } from './shared/components/page/page.component';
+import { PageHeadComponent } from './shared/components/page-head/page-head.component';
 import { LayoutComponent } from './_layout/layout/layout.component';
 import { HeaderComponent } from './_layout/header/header.component';
 import { HomeComponent } from './home/home.component';
@@ -46,6 +48,8 @@ import { CategoryGroupService } from './shared/services/category-group/category-
 import { CategoryService } from './shared/services/category/category.service';
 import { BookService } from './shared/services/book/book.service';
 import { FileService } from './shared/services/file/file.service';
+import { ChartService } from './shared/services/chart/chart.service';
+import { IdBreadcrumbsResolver } from './shared/services/breadcrumb/IdBreadcrumbsResolver';
 
 @NgModule({
   declarations: [
@@ -55,6 +59,7 @@ import { FileService } from './shared/services/file/file.service';
     ConfirmDialogComponent,
     NotificationComponent,
     PageComponent,
+    PageHeadComponent,
     LayoutComponent,
     HeaderComponent,
     HomeComponent,
@@ -80,6 +85,7 @@ import { FileService } from './shared/services/file/file.service';
     CarouselModule.forRoot(),
     ChartsModule,
     routing,
+    McBreadcrumbsModule.forRoot(),
     AppMaterialModule
   ],
   providers: [
@@ -89,7 +95,9 @@ import { FileService } from './shared/services/file/file.service';
     CategoryGroupService,
     CategoryService,
     BookService,
-    FileService,
+    IdBreadcrumbsResolver,
+    FileService,    
+    ChartService,
     MessengerService,
     HttpLoadingService,
     {
